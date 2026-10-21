@@ -1,0 +1,569 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Exo+2:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #060708;
+  --bg-panel: #121526;
+  --bg-panel-alt: #020203;
+  --border: #232b3d;
+  --text: #e7ecf5;
+  --text-dim: #ebeef8;
+  --accent-cyan: #03feff;
+  --accent-magenta: #ff3d81;
+  --danger: #ff4d6d;
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Exo 2", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  color: var(--text);
+  margin-top: 1;
+}
+
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-magenta);
+}
+
+/* ---------------------------------------------------------
+   Navigation/Logo
+   --------------------------------------------------------- */
+nav {
+  position: relative;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 40px;
+}
+
+.site-logo {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-logo span {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.site-logo img {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.site-logo:hover img {
+  transform: scale(1.08);
+}
+
+.site-logo:hover {
+  opacity: 0.8;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-dim);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+  color: var(--accent-cyan);
+  border-bottom-color: var(--accent-cyan);
+}
+
+/* ---------------------------------------------------------
+   Hero (page d'accueil)
+   --------------------------------------------------------- */
+.hero {
+  position: relative;
+  border-top: 3px solid var(--accent-cyan);
+  border-bottom: 1px solid var(--accent-cyan);
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 7, 8, 0.9) 0%,
+    rgba(6, 7, 8, 0.5) 30%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-content .hero-eyebrow,
+.hero-content h1,
+.hero-content p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--accent-cyan);
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(6, 7, 8, 0.88) 0%,
+    rgba(6, 7, 8, 0.6) 20%,
+    rgba(6, 7, 8, 0.2) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 42px;
+  max-width: 620px;
+  margin-bottom: 16px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 1);
+}
+
+.hero p {
+  color: var(--text-dim);
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+}
+
+body > h1 {
+  margin: 40px 40px 0;
+}
+/* ---------------------------------------------------------
+   Features/icons
+   --------------------------------------------------------- */
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: -20px auto 32px;
+  position: relative;
+}
+
+.feature {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 28px;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.feature:hover .feature-icon {
+  transform: translateY(-3px);
+  transform: scale(1.15);
+}
+
+.feature h3 {
+  font-size: 15px;
+  margin: 14px 0 8px;
+}
+
+.feature p {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   Cartes "cartouche"
+   --------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 40px;
+}
+
+.cart-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 22px;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.cart-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.cart-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.cart-card .meta {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* ---------------------------------------------------------
+   Tableaux
+   --------------------------------------------------------- */
+table {
+  border-radius: 0.5rem;
+  width: calc(100% - 80px);
+  margin: 40px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+}
+
+th {
+  background: var(--bg-panel-alt);
+  color: var(--accent-cyan);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+  color: var(--text);
+}
+
+table th:last-child,
+table td:last-child {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background: var(--bg-panel-alt);
+}
+tr:hover td {
+  background: rgba(134, 255, 251, 0.25);
+}
+
+/* ---------------------------------------------------------
+   Formulaires
+   --------------------------------------------------------- */
+.container {
+  width: 380px;
+  margin: 60px auto;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 36px;
+  border-radius: 0.5rem;
+}
+
+.container h1,
+.container h2 {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.container p {
+  line-height: 1.7;
+}
+.container p strong {
+  color: var(--text-dim);
+  font-weight: 500;
+  display: inline-block;
+  width: 140px;
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+}
+
+.error {
+  display: block;
+  margin-top: 4px;
+  color: var(--danger);
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   Boutons
+   --------------------------------------------------------- */
+.btn {
+  display: block;
+  width: fit-content;
+  margin: 10px auto 0;
+  justify-content: center;
+  padding: 10px 24px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 0.8rem;
+  color: var(--accent-cyan);
+  background: transparent;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.hero-button {
+  display: block;
+  width: fit-content;
+  margin: 40px auto;
+  transition: transform 0.2s ease;
+}
+
+.table-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--accent-cyan);
+  color: var(--bg);
+  transform: scale(1.15);
+  transition: transform 0.2s ease;
+}
+
+.btn.red,
+.btn-danger {
+  display: block;
+  width: fit-content;
+  margin: 10px auto 0;
+  padding: 10px 24px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  border: 1px solid var(--danger);
+  border-radius: 0.8rem;
+  color: var(--danger);
+  background: transparent;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn.red:hover,
+.btn-danger:hover {
+  background: var(--danger);
+  color: var(--bg);
+  transform: scale(1.15);
+  transition: transform 0.2s ease;
+}
+
+.site-footer {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  padding: 10px 40px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .site-logo span {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  nav {
+    padding: 24px 20px;
+  }
+
+  .site-logo {
+    left: 20px;
+  }
+
+  .site-logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  nav ul {
+    gap: 16px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-left: 64px;
+  }
+
+  nav ul li a {
+    font-size: 11px;
+  }
+  main {
+    flex: none;
+  }
+
+  body > h1 {
+    margin: 20px 20px 0;
+  }
+  .hero {
+    margin-top: -2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .hero-image {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .card-grid {
+    padding: 20px;
+  }
+
+  table {
+    width: calc(100% - 40px);
+    margin: 20px;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .container {
+    width: auto;
+    margin: 30px 20px;
+    padding: 24px;
+  }
+
+  .home-features {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
